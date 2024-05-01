@@ -17,11 +17,11 @@ async function getResultFromGoogle(query)
     const listadoResultados = await page.evaluate(()=> {
         let resultados = [];
         console.log('entramos a lista de resultado')
-        document.querySelectorAll('div[class = "results-card-container"] a').forEach((anchor, index)=>{
+        document.querySelectorAll('div[class = "results-card-container"]').forEach((anchor, index)=>{
             resultados.push({
                 index: index,
-                title: anchor.innerText,
-                url: anchor.href,
+                title: anchor.querySelector('div[class = "results-card-secondary-info"]').innerText,
+                url: anchor.querySelector('a').href,
             });
         });
         return resultados;
@@ -34,4 +34,4 @@ async function getResultFromGoogle(query)
 }
 
 
-getResultFromGoogle('nodejs');
+getResultFromGoogle('Mecanico');
