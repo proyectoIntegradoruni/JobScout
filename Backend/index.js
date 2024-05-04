@@ -5,7 +5,7 @@ import conectarDB from "./config/db.js";
 import { autenticar, registrar, 
          olvidePassword,nuevoPassword, 
          cambiarDatos} from "./controller/userControl.js";
-import { webScaping } from './controller/webScaping.js'
+import { buscar } from './controller/webScaping.js'
 
 const app = express();
 
@@ -25,7 +25,7 @@ app.post('/api/resetDatos', cambiarDatos);
 app.post('/api/register', registrar);
 app.post('/api/resetPasword', olvidePassword);
 app.post('/api/newPassword',nuevoPassword);
-app.post('/api/webScaping', webScaping);
+app.post('/api/webScaping', buscar);
 
 const PORT = process.env.PORT || 4000;
 

@@ -28,12 +28,26 @@ async function getResultFromGoogle(query)
     });
 
     console.log(listadoResultados);
+    return listadoResultados;
     await browser.close();
 
 
 }
 
+const buscar = async (req, res, next) => {
+    const { frase } = req.body;
+  
+    try {
+      resultado = getResultFromGoogle('frase');
+        
+      // Enviar respuesta con el token
+      res.status(200).json({ respuesta: 'ok', resultados: resultado });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json('Error interno del servidor');
+    }
+  };
 
-getResultFromGoogle('Mecanico');
 
-export { getResultFromGoogle }
+
+export { buscar }
