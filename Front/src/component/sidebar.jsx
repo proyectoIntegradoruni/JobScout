@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import {FaUserAlt, FaBars} from "react-icons/fa"
+import {FaBars} from "react-icons/fa"
 import { NavLink } from "react-router-dom";
 
 import "./sidebar.css"

@@ -1,26 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import "./App5.css";
 
 const SearchComponent = () => {
   // Set up state for users and search term
-  const [users, setUsers] = useState([]);
   const [search, setSearch] = useState("");
 
   // Mock data for demonstration
-  useEffect(() => {
-    // Fetch users or set them from some data source
-    const mockUsers = [
-      { id: 1, name: 'John Doe' },
-      { id: 2, name: 'Jane Smith' },
-      { id: 3, name: 'Bob Johnson' }
-    ];
-    setUsers(mockUsers);
-  }, []);
-
-  // Filter users based on search term
-  const filteredUsers = users.filter(user =>
-    user.name.toLowerCase().includes(search.toLowerCase())
-  );
+  
+ 
 
   // Handle input change
   const handleInputChange = (e) => {

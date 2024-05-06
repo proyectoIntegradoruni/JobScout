@@ -6,7 +6,6 @@ import Login from "./login";
 import Registro from "./registro";
 import Principal from "./principal";
 import Inicio from "./component/Inicio"
-import  SearchComponent from "./component/SearchComponent"
 export const AppRouter = () => {
   return (
     <BrowserRouter>
