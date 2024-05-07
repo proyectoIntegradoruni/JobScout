@@ -38,6 +38,7 @@ const Inicio= ({children}) => {
 
     }
   ]
+
   return (
     <div className="container">
     <div style={{ width: isOpen ? "300px" : "90px" }} className="sidebar">

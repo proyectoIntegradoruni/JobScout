@@ -27,6 +27,32 @@ const SearchComponent = () => {
     setSearch(e.target.value);
   };
 
+  const handleBuscar = async (e) => {
+    e.preventDefault();
+    if( search == "")
+    {
+      alert("Debes poner un criterio a buscar")
+    }
+    else
+    {
+    try {
+      const response = await fetch('http://localhost:4000/api/webScaping', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ search })
+      });
+  
+      const data = await response.json();        
+
+      
+    } catch (error) {
+      console.error('Error en la busqueda:', error);
+      alert('Ocurrió un error al iniciar sesión. Por favor, intenta de nuevo más tarde.');
+    }
+  }
+  };
   // Render the component
   return (
     <div>
@@ -55,7 +81,7 @@ const SearchComponent = () => {
     style={{ marginRight: '10px' }}
     />
 
-    <button  className="boton2" type="submit"  >Buscar</button>
+    <button  className="boton2" type="submit"  onClick={handleBuscar}>Buscar</button>
      
     </div>
   );
