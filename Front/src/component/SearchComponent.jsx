@@ -1,30 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import "./App5.css";
 
 const SearchComponent = () => {
   // Set up state for users and search term
-  const [users, setUsers] = useState([]);
   const [search, setSearch] = useState("");
+  const [search2, setSearch2] = useState("");
+
 
   // Mock data for demonstration
-  useEffect(() => {
-    // Fetch users or set them from some data source
-    const mockUsers = [
-      { id: 1, name: 'John Doe' },
-      { id: 2, name: 'Jane Smith' },
-      { id: 3, name: 'Bob Johnson' }
-    ];
-    setUsers(mockUsers);
-  }, []);
-
-  // Filter users based on search term
-  const filteredUsers = users.filter(user =>
-    user.name.toLowerCase().includes(search.toLowerCase())
-  );
+  
+ 
 
   // Handle input change
   const handleInputChange = (e) => {
     setSearch(e.target.value);
+  };
+  const handleInputChange2 = (e) => {
+    setSearch2(e.target.value);
   };
 
   const handleBuscar = async (e) => {
@@ -55,7 +47,7 @@ const SearchComponent = () => {
   };
   // Render the component
   return (
-    <div>
+    <div >
      
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"  width="80" height="30">
@@ -73,11 +65,11 @@ const SearchComponent = () => {
 
 
     <input
-    value={search}
+    value={search2}
     type="text"
     placeholder="Lugar"
     className="form-control rounded-pill" 
-    onChange={handleInputChange}
+    onChange={handleInputChange2}
     style={{ marginRight: '10px' }}
     />
 

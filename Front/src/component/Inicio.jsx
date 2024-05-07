@@ -60,11 +60,12 @@ const Inicio= ({children}) => {
       } 
     </div>
     <div style={{ width: isOpen ? "calc(100% - 300px)" : "calc(100% - 90px)" }} className="top_sectionp">
-    <h3 style={{ fontSize: '40px', color: '#0D0D0D' }}>Bienvenido a Titulo</h3>
-    <div> <SearchComponent/></div>
+    <h3 style={{ fontSize: '40px', color: '#0D0D0D' }}>Bienvenido a JOBSCOUT</h3>
+    
+    <div style={{ margin: '50px', padding: 0 }}><SearchComponent/></div>
 
       <Cards/>
-    </div>
+    </div> 
   </div>
   
   );

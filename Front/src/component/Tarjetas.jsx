@@ -1,9 +1,5 @@
 import React from "react";
 import Card from "./tarjeta";
-
-import image1 from "./image1.jpg";
-import image2 from "./image1.jpg";
-import image3 from "./image1.jpg";
 import { Grid } from '@mui/material';
 
 const cards = [
