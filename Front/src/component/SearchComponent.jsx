@@ -49,12 +49,12 @@ const SearchComponent = () => {
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ search,search2 })
+          body: JSON.stringify({ search,nombre })
         });
     
         const data = await response.json();        
        
-        
+        console.log(data)
       } catch (error) {
         console.error('Error al iniciar sesión:', error);
         alert('Ocurrió un error al iniciar sesión. Por favor, intenta de nuevo más tarde.');
