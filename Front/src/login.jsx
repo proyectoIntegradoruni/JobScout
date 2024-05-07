@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 //import Webcam from "react-webcam"; // Importa el componente de cámara
 import "./styles.css";
 import "./component/sidebar.css"
-import { BiVideoRecording } from "react-icons/bi";
 import { SlLogin } from "react-icons/sl";
 import { FaUserPlus } from "react-icons/fa6";
 import { MdCampaign } from "react-icons/md";
