@@ -1,12 +1,40 @@
 import React, { useState} from 'react';
 import "./App5.css";
+import Card from "./tarjeta";
+import { Grid } from '@mui/material';
+
+
 
 const SearchComponent = () => {
   // Set up state for users and search term
   const [search, setSearch] = useState("");
   const [search2, setSearch2] = useState("");
-
-
+  const [cards,setcards] = useState([
+    {
+      id: 1,
+      title: "Card 1",
+      url: "https://www.google.com/webhp?authuser=1",
+    },
+    {
+      id: 2,
+      title: "Card 2",
+      image: "image2.jpg",
+      url: "https://example.com/card2",
+    },
+    {
+      id: 3,
+      title: "Card 3",
+     
+      url: "https://example.com/card3",
+    },
+    {
+    id: 4,
+    title: "Card 3",
+    
+    url: "https://example.com/card3",
+  },
+    // Add more cards as needed
+  ]);
   // Mock data for demonstration
   
  
@@ -73,8 +101,17 @@ const SearchComponent = () => {
     style={{ marginRight: '10px' }}
     />
 
-    <button  className="boton2" type="submit"  onClick={handleBuscar}>Buscar</button>
-     
+    <button  className="boton2" type="submit"    style={{ margin: '50px', padding: 0 }} onClick={handleBuscar}>Buscar</button>
+
+    <div className="d-flex justify-content-center align-items-center h-100">
+      <Grid container spacing={5}>
+        {cards.map(({ title, url, id }) => (
+          <Grid item xs={12} sm={6} md={3} key={id}>
+            <Card  title={title} url={url} id={id} />
+          </Grid>
+        ))}
+      </Grid>
+    </div>
     </div>
   );
 };

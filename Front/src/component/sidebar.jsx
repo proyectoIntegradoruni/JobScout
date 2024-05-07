@@ -62,6 +62,7 @@ const Sidebar = ({children}) => {
         </svg>
  
            </div> 
+          
 
       <main>{children} </main>
     </div>

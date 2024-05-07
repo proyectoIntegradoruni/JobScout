@@ -5,7 +5,6 @@ import { BiVideoRecording } from "react-icons/bi";
 import { FaBars } from "react-icons/fa";
 import { MdPeopleAlt } from "react-icons/md";
 import { NavLink } from "react-router-dom";
-import Cards from "./Tarjetas";
 import "./sidebar.css";
  import SearchComponent from "./SearchComponent"
 
@@ -64,7 +63,6 @@ const Inicio= ({children}) => {
     
     <div style={{ margin: '50px', padding: 0 }}><SearchComponent/></div>
 
-      <Cards/>
     </div> 
   </div>
   
