@@ -44,9 +44,10 @@ async function getResultFromGoogle1(query)
 {
     const browser = await chromium.launch();
     const page = await browser.newPage();
-    await page.goto('https://co.computrabajo.com');
-    await page.waitForSelector('input[id = "prof-cat-search-input"]')
-    await page.type('input[id = "prof-cat-search-input"]',query);
+    await page.goto('https://co.computrabajo.com/trabajo-de-mecanico');
+    console.log('he llegado hasta enter pagina')
+    await page.waitForSelector('input[id="prof-cat-search-input-holder"]')
+    await page.type('input[id="prof-cat-search-input-holder"]',query);
     page.keyboard.press('Enter');
     console.log('he llegado hasta enter')
     await page.waitForSelector('article[class = "box_offer"]')
@@ -63,7 +64,7 @@ async function getResultFromGoogle1(query)
                 title: divide[0],
                 content: divide[divide.length - 1],
                 cositas: lista,
-                url: anchor.querySelector('a').href,
+                url: anchor.querySelector('h2 a').href,
             });
         });
         return resultados;

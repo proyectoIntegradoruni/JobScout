@@ -10,17 +10,7 @@ const SearchComponent = () => {
   const [search, setSearch] = useState("");
   const [search2, setSearch2] = useState("");
   const [cards, setcards] = useState([
-    {
-      id: 1,
-      title: "Card 1",
-      url: "https://www.google.com/webhp?authuser=1",
-    },
-    {
-      id: 2,
-      title: "Card 2",
-      image: "image2.jpg",
-      url: "https://example.com/card2",
-    },
+   
     {
       id: 3,
       title: "Card 3",
@@ -71,7 +61,12 @@ const SearchComponent = () => {
       });
   
       const data = await response.json(); 
-      setcards(data)     
+      console.log(data);
+      const res = data.resultados
+      if(res != []){
+        setcards(res)   
+      }
+        
 
       
     } catch (error) {
