@@ -1,4 +1,4 @@
-import Usuario from "../models/user.js";
+import Usuario from "../model/user.js";
 import nodemailer from 'nodemailer';
 import { nanoid } from 'nanoid';
 
@@ -84,6 +84,24 @@ const confirmar = async (req, res) => {
       } else {
         return res.status(400).json('Contraseña incorrecta');
       }
+    } catch (error) {
+      console.log(error);
+      res.status(500).json('Error interno del servidor');
+    }
+  };
+
+  const alertas = async (req, res, next) => {
+    const { alerta, email } = req.body;
+  
+    try {
+      // Comprobar si el usuario existe
+      const usuario = await Usuario.findOne({ email });
+  
+      if (!usuario) {
+        return res.status(401).json('Credenciales inválidas');
+      }//hola
+      usuario.alert = (usuario.alert).push(alerta)
+      res.status(200).json({ respuesta: 'ok', t: token });
     } catch (error) {
       console.log(error);
       res.status(500).json('Error interno del servidor');
@@ -210,5 +228,6 @@ export {
     perfil,
     confirmar,
     autenticar,
-    cambiarDatos
+    cambiarDatos,
+    alertas
 }

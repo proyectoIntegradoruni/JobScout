@@ -1,0 +1,35 @@
+.card:hover {
+    box-shadow: px 10px 20px 1px rgba(125, 23, 23, 0.273) !important;
+    transition: all 0.7s linear;
+  }
+  
+  .card-body {
+    padding: 2rem 0 !important;
+  }
+  
+  .card-text {
+    padding: 0.3rem 1rem;
+    font-size: 1rem;
+  }
+  
+  .overflow2 {
+    overflow: hidden;
+  }
+  
+  .card-img-top {
+
+    
+  
+    transform: scale(1);
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .card-img-top:hover {
+    transform: scale(1.8);
+  }
+  .card-title {
+    font-size: 10rem;
+    font-family: 'Bahnschrift Light Condensed', sans-serif;
+    font-weight: bold; 
+  }
+  
