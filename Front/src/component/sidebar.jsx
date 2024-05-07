@@ -4,8 +4,6 @@ import {FaBars} from "react-icons/fa"
 import { NavLink } from "react-router-dom";
 
 import "./sidebar.css"
-import { BiVideoRecording } from "react-icons/bi";
-import { MdPeopleAlt } from "react-icons/md";
 import { SlLogin } from "react-icons/sl";
 import { FaUserPlus } from "react-icons/fa6";
 import { MdCampaign } from "react-icons/md";

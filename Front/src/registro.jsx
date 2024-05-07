@@ -99,19 +99,15 @@ function Registro() {
         <div className="superior-izquierdo p">
         <div style={{ display: 'flex', alignItems: 'center',right: '30px' }}>
                     
-                   
+  
                 </div>
         </div>
 
-     
             
       </header>
 
       
         <div style={{ margin: '80px', padding: 0 }}>
-        
-      
-     
         
           <form className="login-form" onSubmit={handleRegistro}>
             <span className="login-form-titl"> Registro </span>

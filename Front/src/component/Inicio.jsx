@@ -1,9 +1,7 @@
 
 import { useState } from "react";
 
-import { BiVideoRecording } from "react-icons/bi";
 import { FaBars } from "react-icons/fa";
-import { MdPeopleAlt } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 import "./sidebar.css";
 import SearchComponent from "./SearchComponent"

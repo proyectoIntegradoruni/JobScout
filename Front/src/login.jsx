@@ -8,7 +8,6 @@ import { FaUserPlus } from "react-icons/fa6";
 import { MdCampaign } from "react-icons/md";
 import { FaHome } from "react-icons/fa";
 import { FaBars } from "react-icons/fa";
-import { MdPeopleAlt } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 function Login() {
   const [isOpen, setIsOpen] = useState(true);
@@ -46,10 +45,7 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const handleRegistro = (e) => {
-    e.preventDefault();
-    navigate('/registro');
-  };
+  
 
   const handleLogin = async (e) => {
     e.preventDefault();
