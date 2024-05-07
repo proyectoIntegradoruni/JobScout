@@ -90,6 +90,24 @@ const confirmar = async (req, res) => {
     }
   };
 
+  const alertas = async (req, res, next) => {
+    const { alerta, email } = req.body;
+  
+    try {
+      // Comprobar si el usuario existe
+      const usuario = await Usuario.findOne({ email });
+  
+      if (!usuario) {
+        return res.status(401).json('Credenciales inválidas');
+      }//hola
+      usuario.alert = (usuario.alert).push(alerta)
+      res.status(200).json({ respuesta: 'ok', t: token });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json('Error interno del servidor');
+    }
+  };
+
   const olvidePassword = async (req, res) => {
     const { email } = req.body;
     console.log(email)
@@ -210,5 +228,6 @@ export {
     perfil,
     confirmar,
     autenticar,
-    cambiarDatos
+    cambiarDatos,
+    alertas
 }

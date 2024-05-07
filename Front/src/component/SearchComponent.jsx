@@ -9,7 +9,7 @@ const SearchComponent = () => {
   // Set up state for users and search term
   const [search, setSearch] = useState("");
   const [search2, setSearch2] = useState("");
-  const [cards,setcards] = useState([
+  const [cards, setcards] = useState([
     {
       id: 1,
       title: "Card 1",
@@ -55,7 +55,7 @@ const SearchComponent = () => {
 
   const handleBuscar = async (e) => {
     e.preventDefault();
-    if( search == "")
+    if( search === "")
     {
       alert("Debes poner un criterio a buscar")
     }
