@@ -1,9 +1,7 @@
 
 import { useState } from "react";
 
-import { BiVideoRecording } from "react-icons/bi";
 import { FaBars } from "react-icons/fa";
-import { MdPeopleAlt } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 import "./sidebar.css";
 import SearchComponent from "./SearchComponent"
@@ -15,10 +13,9 @@ import { FaHome } from "react-icons/fa";
 import React from 'react';
 
 const Inicio= ({children}) => {
-
+  
   const [isOpen, setIsOpen] = useState(true);
   const toggle = () => setIsOpen(!isOpen);
-  
   const menuItem = [
     
     {

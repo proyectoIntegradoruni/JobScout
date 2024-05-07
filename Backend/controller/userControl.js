@@ -116,7 +116,7 @@ const confirmar = async (req, res) => {
       const usuario = await Usuario.findOne({ email });
   
       if (!usuario) {
-        return res.status(401).json('Credenciales inválidas');
+        return res.status(401).json('Usuario no existe');
       }//hola
       
       res.status(200).json({ respuesta: 'ok', t: usuario.alert  });
@@ -247,5 +247,6 @@ export {
     confirmar,
     autenticar,
     cambiarDatos,
-    alertas
+    alertas,
+    RetornarAlertas
 }
