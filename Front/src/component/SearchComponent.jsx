@@ -53,8 +53,7 @@ const SearchComponent = () => {
         });
     
         const data = await response.json();        
-        localStorage.setItem('correo', email); // Corregido aquí
-        navigate('/');
+       
         
       } catch (error) {
         console.error('Error al iniciar sesión:', error);
