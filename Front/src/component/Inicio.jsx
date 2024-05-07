@@ -13,10 +13,9 @@ import { FaHome } from "react-icons/fa";
 import React from 'react';
 
 const Inicio= ({children}) => {
-
+  
   const [isOpen, setIsOpen] = useState(true);
   const toggle = () => setIsOpen(!isOpen);
-  
   const menuItem = [
     
     {

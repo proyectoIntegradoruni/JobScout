@@ -60,8 +60,8 @@ function Login() {
       });
   
       const data = await response.json();        
-  
-      navigate('/home');
+      localStorage.setItem('correo', email); // Corregido aquí
+      navigate('/');
       
     } catch (error) {
       console.error('Error al iniciar sesión:', error);
