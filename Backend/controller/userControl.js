@@ -1,4 +1,4 @@
-import Usuario from "../models/user.js";
+import Usuario from "../model/user.js";
 import nodemailer from 'nodemailer';
 import { nanoid } from 'nanoid';
 
