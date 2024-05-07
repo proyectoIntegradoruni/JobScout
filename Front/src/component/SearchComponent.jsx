@@ -24,22 +24,28 @@ const SearchComponent = () => {
     {
       id: 3,
       title: "Card 3",
+      content : "cdshbcjd cgiysdgc uisdcgids cguis gch9su7 gc7lsicg7lsic gisyc g7syi cgisycgh isuc guisc hyscg sylic gslyic gslicysgcgs8c ngsujgc sycu gscl snbcgsl9 csfcs8cbs csciscgs8c igsvc7sliychbsgcysw",
      
       url: "https://example.com/card3",
     },
     {
     id: 4,
     title: "Card 3",
+    content : "",
     
     url: "https://example.com/card3",
   },
-    // Add more cards as needed
+  {
+    id: 3,
+    title: "Card 3",
+    content : "cdshbcjd cgiysdgc uisdcgids cguis gch9su7 gc7lsicg7lsic gisyc g7syi cgisycgh isuc guisc hyscg sylic gslyic gslicysgcgs8c ngsujgc sycu gscl snbcgsl9 csfcs8cbs csciscgs8c igsvc7sliychbsgcysw",
+   
+    url: "https://example.com/card3",
+  }
   ]);
-  // Mock data for demonstration
   
  
 
-  // Handle input change
   const handleInputChange = (e) => {
     setSearch(e.target.value);
   };
@@ -105,9 +111,9 @@ const SearchComponent = () => {
 
     <div className="d-flex justify-content-center align-items-center h-100">
       <Grid container spacing={5}>
-        {cards.map(({ title, url, id }) => (
+        {cards.map(({ title, content, url, id }) => (
           <Grid item xs={12} sm={6} md={3} key={id}>
-            <Card  title={title} url={url} id={id} />
+            <Card  title={title}  content= {content}url={url} id={id} />
           </Grid>
         ))}
       </Grid>
