@@ -4,6 +4,8 @@ import "./App5.css";
 const SearchComponent = () => {
   // Set up state for users and search term
   const [search, setSearch] = useState("");
+  const [search2, setSearch2] = useState("");
+
 
   // Mock data for demonstration
   
@@ -13,10 +15,13 @@ const SearchComponent = () => {
   const handleInputChange = (e) => {
     setSearch(e.target.value);
   };
+  const handleInputChange2 = (e) => {
+    setSearch2(e.target.value);
+  };
 
   // Render the component
   return (
-    <div>
+    <div >
      
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"  width="80" height="30">
@@ -34,11 +39,11 @@ const SearchComponent = () => {
 
 
     <input
-    value={search}
+    value={search2}
     type="text"
     placeholder="Lugar"
     className="form-control rounded-pill" 
-    onChange={handleInputChange}
+    onChange={handleInputChange2}
     style={{ marginRight: '10px' }}
     />
 
