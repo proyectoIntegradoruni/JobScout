@@ -70,7 +70,8 @@ const SearchComponent = () => {
         body: JSON.stringify({ search })
       });
   
-      const data = await response.json();        
+      const data = await response.json(); 
+      setcards(data)     
 
       
     } catch (error) {
