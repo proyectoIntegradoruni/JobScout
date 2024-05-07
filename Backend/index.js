@@ -4,7 +4,8 @@ import cors from 'cors';
 import conectarDB from "./config/db.js";
 import { autenticar, registrar, 
          olvidePassword,nuevoPassword, 
-         cambiarDatos, alertas} from "./controller/userControl.js";
+         cambiarDatos, alertas,
+         RetornarAlertas} from "./controller/userControl.js";
 import { buscar } from './controller/webScaping.js'
 
 const app = express();
@@ -27,6 +28,7 @@ app.post('/api/resetPasword', olvidePassword);
 app.post('/api/newPassword',nuevoPassword);
 app.post('/api/webScaping', buscar);
 app.post('/api/alert', alertas);
+app.post('/api/alertRes', RetornarAlertas);
 
 const PORT = process.env.PORT || 4000;
 

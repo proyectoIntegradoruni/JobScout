@@ -72,10 +72,12 @@ async function getResultFromGoogle1(query)
         return resultados;
     });
 
-    console.log(listadoResultados);
+    //console.log(listadoResultados);
     await browser.close();
+    return listadoResultados
 
 
 }
 
-getResultFromGoogle1('Mecanico');
+const t = getResultFromGoogle1('Mecanico');
+console.log(t)
