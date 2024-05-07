@@ -46,7 +46,7 @@ const SearchComponent = () => {
 
   const handleBuscar = async (e) => {
     e.preventDefault();
-    if( search == "")
+    if( search === "")
     {
       alert("Debes poner un criterio a buscar")
     }
@@ -62,7 +62,12 @@ const SearchComponent = () => {
       });
   
       const data = await response.json(); 
-      setcards(data)     
+      console.log(data);
+      const res = data.resultados
+      if(res != []){
+        setcards(res)   
+      }
+        
 
       
     } catch (error) {
