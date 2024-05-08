@@ -101,7 +101,25 @@ const confirmar = async (req, res) => {
         return res.status(401).json('Credenciales inválidas');
       }//hola
       usuario.alert = (usuario.alert).push(alerta)
-      res.status(200).json({ respuesta: 'ok', t: token });
+      res.status(200).json({ respuesta: 'ok', t: "guardado Correctamente" });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json('Error interno del servidor');
+    }
+  };
+
+  const RetornarAlertas = async (req, res, next) => {
+    const { email } = req.body;
+  
+    try {
+      // Comprobar si el usuario existe
+      const usuario = await Usuario.findOne({ email });
+  
+      if (!usuario) {
+        return res.status(401).json('Usuario no existe');
+      }//hola
+      
+      res.status(200).json({ respuesta: 'ok', t: usuario.alert  });
     } catch (error) {
       console.log(error);
       res.status(500).json('Error interno del servidor');
@@ -229,5 +247,6 @@ export {
     confirmar,
     autenticar,
     cambiarDatos,
-    alertas
+    alertas,
+    RetornarAlertas
 }
