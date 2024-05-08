@@ -67,42 +67,63 @@ async function getResultFromGoogle(query, city) {
 
 async function getResultFromGoogle1(query)
 {
-    const browser = await chromium.launch();
-    const page = await browser.newPage();
-    await page.goto('https://agenciapublicadeempleo.sena.edu.co/spe-web/spe/public/buscadorVacante?solicitudId=mecanico');
-    console.log('he llegado hasta enter pagina')
-    await page.waitForSelector('input[name="solicitudId"]')
-    console.log('he llegado hasta enter pagina1')
-    await page.type('input[name="solicitudId"]',query);
-    page.keyboard.press('Enter');
-    console.log('he llegado hasta enter')
-    await page.waitForSelector('div[class="dataTables_wrapper no-footer"]')
-    //await page.waitForNavigation({waitUntil: 'networkidle'});
-    console.log('he llegado mas abajo')
-    await page.type('select[name="buscar-solicitud-public_length"]', '100');
-    
-    const listadoResultados = await page.evaluate(()=> {
-        let resultados = [];
-        console.log('entramos a lista de resultado')
-        document.querySelectorAll('div[class="row"] ').forEach((anchor, index)=>{
-            lista = anchor.querySelector('div[class="span5"]').innerText
-            divide = lista.split('\n');
-            par = divide.slice(1).join('\n');
-                    resultados.push({
-                        index: index,
-                        title: divide[0],
-                        content: par,
-                        url: anchor.querySelector('div[class="span1"] a').href,
-                    });
+    try
+    {
+        const browser = await chromium.launch();
+        const page = await browser.newPage();
+        await page.goto('https://agenciapublicadeempleo.sena.edu.co/spe-web/spe/public/buscadorVacante?solicitudId=mecanico');
+        console.log('he llegado hasta enter pagina')
+        try {
+            await page.waitForSelector('input[name="solicitudId"]'); // Esperar hasta 5 segundos
+        } catch (error) {
+            console.log('El input no apareció a tiempo');
+            await browser.close();
+            return [];
+        }
+        console.log('he llegado hasta enter pagina1')
+        await page.type('input[name="solicitudId"]',query);
+        page.keyboard.press('Enter');
+        console.log('he llegado hasta enter')
+        try {
+            await page.waitForSelector('div[class="dataTables_wrapper no-footer"]') // Esperar hasta 5 segundos
+        } catch (error) {
+            console.log('La busqueda no aparecio');
+            await browser.close();
+            return [];
+        }
+        
+        //await page.waitForNavigation({waitUntil: 'networkidle'});
+        console.log('he llegado mas abajo')
+        await page.type('select[name="buscar-solicitud-public_length"]', '100');
+        
+        const listadoResultados = await page.evaluate(()=> {
+            let resultados = [];
+            console.log('entramos a lista de resultado')
+            document.querySelectorAll('div[class="row"] ').forEach((anchor, index)=>{
+                lista = anchor.querySelector('div[class="span5"]').innerText
+                divide = lista.split('\n');
+                par = divide.slice(1).join('\n');
+                        resultados.push({
+                            index: index,
+                            title: divide[0],
+                            content: par,
+                            url: anchor.querySelector('div[class="span1"] a').href,
+                        });
+            });
+            return resultados;
         });
-        return resultados;
-    });
 
-    console.log(listadoResultados);
-    await browser.close();
-    return listadoResultados;
+        console.log(listadoResultados);
+        await browser.close();
+        return listadoResultados;
+    }
+    catch(error)
+    {
+        console.log(error);
+        res.status(450).json('pagina caida', error);
+        return []
+    }
     
-
 
 }
 
