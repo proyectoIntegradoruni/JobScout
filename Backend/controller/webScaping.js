@@ -113,7 +113,7 @@ const buscar = async (req, res, next) => {
     
     const resultado0 = await getResultFromGoogle(search, null);
     const resultado1 = await getResultFromGoogle1(search);
-    const resultado = resultado0;
+    const resultado = resultado0.concat(resultado1);
 
       
     // Enviar respuesta con el token
