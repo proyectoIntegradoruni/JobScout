@@ -10,6 +10,7 @@ import { MdCampaign } from "react-icons/md";
 import { SlLogin } from "react-icons/sl";
 import "./sidebar.css";
 import { DataGrid } from '@mui/x-data-grid';
+import { ImExit } from "react-icons/im";
 
 
 const Sidebar = ({children}) => {
@@ -86,7 +87,7 @@ const Sidebar = ({children}) => {
     {
       path: "/salir",
       name: "Cerrar sesion",
-      icon:<MdCampaign />
+      icon:<ImExit/>
 
     }
   ]

@@ -9,6 +9,8 @@ import { MdCampaign } from "react-icons/md";
 import { FaHome } from "react-icons/fa";
 import { FaBars } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
+import { ImExit } from "react-icons/im";
+
 function Login() {
   const [isOpen, setIsOpen] = useState(true);
   const toggle = () => setIsOpen(!isOpen);
@@ -44,7 +46,7 @@ function Login() {
     {
       path: "/salir",
       name: "Cerrar sesion",
-      icon:<MdCampaign />
+      icon:<ImExit/>
 
     }
   ]
