@@ -40,6 +40,12 @@ function Login() {
       name: "Alerta",
       icon:<MdCampaign />
 
+    },
+    {
+      path: "/salir",
+      name: "Cerrar sesion",
+      icon:<MdCampaign />
+
     }
   ]
   const [email, setEmail] = useState("");

@@ -47,7 +47,7 @@ const Sidebar = ({children}) => {
           alert('Ocurrió un error al iniciar sesión. Por favor, intenta de nuevo más tarde.');
         }
       } else {
-        window.location.href = "/login";
+        
       }
     };
   
@@ -80,6 +80,12 @@ const Sidebar = ({children}) => {
     {
       path: "/alerta",
       name: "Alerta",
+      icon:<MdCampaign />
+
+    },,
+    {
+      path: "/salir",
+      name: "Cerrar sesion",
       icon:<MdCampaign />
 
     }

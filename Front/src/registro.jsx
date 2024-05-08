@@ -39,6 +39,12 @@ function Registro() {
       name: "Alerta",
       icon:<MdCampaign />
 
+    },
+    {
+      path: "/salir",
+      name: "Cerrar sesion",
+      icon:<MdCampaign />
+
     }
   ]
   const [nombre, setNombre] = useState("");

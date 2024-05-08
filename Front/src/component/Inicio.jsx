@@ -43,6 +43,12 @@ const Inicio= ({children}) => {
       name: "Alerta",
       icon:<MdCampaign />
 
+    },
+    {
+      path: "/salir",
+      name: "Cerrar sesion",
+      icon:<MdCampaign />
+
     }
   ]
 
