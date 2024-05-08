@@ -100,7 +100,7 @@ const confirmar = async (req, res) => {
       if (!usuario) {
         return res.status(401).json('Credenciales inválidas');
       }//hola
-      usuario.alert = (usuario.alert).push(alerta)
+      usuario.alert.push(alerta)
       res.status(200).json({ respuesta: 'ok', t: "guardado Correctamente" });
     } catch (error) {
       console.log(error);
