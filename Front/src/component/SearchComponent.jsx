@@ -41,8 +41,25 @@ const SearchComponent = () => {
   const handleAlert = async (e) => {
     const nombre = localStorage.getItem('correo');
     
-    if (nombre !== null) { // Cambiado de =! a !== para comparar si nombre no es null
-      // Haz algo si nombre no es null
+    if (nombre !== null) { 
+      http://localhost:4000/api/alert
+      try {
+        const response = await fetch('http://localhost:4000/api/alert', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ search,nombre })
+        });
+    
+        const data = await response.json();        
+       
+        console.log(data)
+      } catch (error) {
+        console.error('Error al iniciar sesión:', error);
+        alert('Ocurrió un error al iniciar sesión. Por favor, intenta de nuevo más tarde.');
+      }
+     
     } else {
       window.location.href = "/login";
     }
@@ -70,7 +87,7 @@ const SearchComponent = () => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ search })
+        body: JSON.stringify({ search,search2 })
       });
   
       const data = await response.json(); 
