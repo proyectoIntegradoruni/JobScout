@@ -1,18 +1,60 @@
 import React, { useState } from "react";
 
-import {FaBars} from "react-icons/fa"
+import { FaBars } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 
-import "./sidebar.css"
-import { SlLogin } from "react-icons/sl";
+import { useEffect } from 'react';
+import { FaHome } from "react-icons/fa";
 import { FaUserPlus } from "react-icons/fa6";
 import { MdCampaign } from "react-icons/md";
-import { FaHome } from "react-icons/fa";
+import { SlLogin } from "react-icons/sl";
+import "./sidebar.css";
+import { DataGrid } from '@mui/x-data-grid';
+
 
 const Sidebar = ({children}) => {
+
   const [isOpen, setIsOpen] = useState(true);
   const toggle = () => setIsOpen(!isOpen);
+  const [cards, setcards] = useState([])
+
+  useEffect(() => {
+    const fetchData = async () => { // Marca la función como async
+      const nombre = localStorage.getItem('correo');
+      console.log(nombre);
+      if (nombre !== null) { 
+        try {
+          console.log('hh')
+          const response = await fetch('http://localhost:4000/api/alertRes', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({email :nombre })
+          });
+      
+          const data = await response.json();
+          console.log(data);
+          const res = data.t
+          
+          if(res != []){
+            setcards(res)
+           
+          }        
+         
+        } catch (error) {
+          console.error('Error al iniciar sesión:', error);
+          alert('Ocurrió un error al iniciar sesión. Por favor, intenta de nuevo más tarde.');
+        }
+      } else {
+        window.location.href = "/login";
+      }
+    };
   
+    fetchData();
+  }, []);
+  
+
   const menuItem = [
     
     {
@@ -42,6 +84,21 @@ const Sidebar = ({children}) => {
 
     }
   ]
+
+  const columns = [
+    
+    { field: 'Alertas', headerName: 'Alertas', width: 130 },
+    { field: 'Estado', headerName: 'Estado', width: 130 },
+   
+    
+  ];
+  
+  const rows = cards.map((card, index) => ({
+    id: index + 1,
+    Alertas: card,
+    Estado: 'activado' // Esto asegura que el estado siempre sea 'activado'
+  }));
+  
   return (
     <div className="container">
       <div style={{width: isOpen ? "300px" : "90px"}} className="sidebar">
@@ -65,12 +122,35 @@ const Sidebar = ({children}) => {
           }
       </div>
       <div style={{ width: isOpen ? "calc(100% - 300px)" : "calc(100% - 90px)" }} className="top_sectionp">
-    <h3 style={{ fontSize: '90px', color: '#0D0D0D' }}>No hay alertas disponibles</h3>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"  width="80" height="30">
-        <path fill="#7ED957" d="M224 512c35.3 0 64-28.7 64-64H160c0 35.4 28.7 64 64 64zm215.4-149.7c-19.3-20.8-55.5-52-55.5-154.3 0-77.7-54.5-139.9-127.9-155.2V32c0-17.7-14.3-32-32-32s-32 14.3-32 32v20.8C118.6 68.1 64.1 130.3 64.1 208c0 102.3-36.2 133.5-55.5 154.3-6 6.5-8.7 14.2-8.6 21.7 .1 16.4 13 32 32.1 32h383.8c19.1 0 32-15.6 32.1-32 .1-7.6-2.6-15.3-8.6-21.7z"/>
-        </svg>
+      {cards.length > 0 ? (
+        <table>
+          <thead>
+            <tr>
+            <div style={{ height: 400, width: '100%' }}>
+            <h3 style={{ fontSize: '90px', color: '#0D0D0D' }}>Alertas disponibles</h3>
+      <DataGrid
+        rows={rows}
+        columns={columns}
+        initialState={{
+          pagination: {
+            paginationModel: { page: 0, pageSize: 5 },
+          },
+        }}
+        pageSizeOptions={[5, 10]}
+        checkboxSelection
+      />
+    </div>
+            </tr>
+          </thead>
+          
+           
+        </table>
+      ) : (
+        <h3 style={{ fontSize: '90px', color: '#0D0D0D' }}>No hay alertas disponibles</h3>
+      )}
+    </div>
+    
  
-           </div> 
           
 
       <main>{children} </main>
