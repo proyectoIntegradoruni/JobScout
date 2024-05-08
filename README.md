@@ -29,3 +29,4 @@ Este proyecto desarrolla una plataforma integral de búsqueda de empleo que empl
 
 
 **Nota importante:** Antes de ejecutar la aplicación localmente, asegúrate de cambiar las URL de las peticiones del frontend para que apunten al puerto donde está corriendo el backend. Además de configurar la base de datos correspondiente Mongo
+

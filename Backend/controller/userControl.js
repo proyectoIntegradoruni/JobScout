@@ -99,15 +99,25 @@ const confirmar = async (req, res) => {
   
       if (!usuario) {
         return res.status(401).json('Credenciales inválidas');
-      }//hola
-      usuario.alert = (usuario.alert).push(alerta)
-      res.status(200).json({ respuesta: 'ok', t: "guardado Correctamente" });
+      }
+  
+      console.log('Usuario encontrado:', usuario);
+  
+      // Agregar la alerta al usuario
+      usuario.alert.push(alerta);
+  
+      console.log('Alerta agregada:', usuario.alert);
+  
+      // Guardar los cambios en la base de datos
+      await usuario.save();
+  
+      res.status(200).json({ respuesta: 'ok', t: 'Guardado correctamente' });
     } catch (error) {
       console.log(error);
       res.status(500).json('Error interno del servidor');
     }
   };
-
+  
   const RetornarAlertas = async (req, res, next) => {
     const { email } = req.body;
   
